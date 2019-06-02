@@ -1,39 +1,27 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import logo from './logo.svg'
+import { Route, Link, Switch, NavLink } from 'react-router-dom'
 import './App.css'
 
-const Index = () => <h2>Home</h2>
+const Index = () => <p>Home</p>
 
-const About = () => <h2>About</h2>
+const About = () => <p>About</p>
 
-const Users = () => <h2>Users</h2>
+const Users = () => <p>Users</p>
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Router>
-          <Route path="/" component={Index} />
+        <Switch>
+          <Route exact path="/" component={Index} />
           <Route path="/about/" component={About} />
           <Route path="/users/" component={Users} />
-
-          <Link to="/">Home</Link>
-          <Link to="/about/">About</Link>
-          <Link to="/users/">Users</Link>
-        </Router>
+        </Switch>
+        <Link to="/">Home</Link>
+        <NavLink to="/about/" activeClassName="is-active">
+          About
+        </NavLink>
+        <Link to="/users/">Users</Link>
       </header>
     </div>
   )
